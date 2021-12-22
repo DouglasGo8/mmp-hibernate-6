@@ -1,0 +1,5 @@
+= Beginning Hibernate 6 Java Persistence From Beginner To Pro
+
+== Links
+
+- https://github.com/Apress/beginning-hibernate-6[Apress Beginning Hibernate 6]
