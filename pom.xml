@@ -9,10 +9,11 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Apress :: Beginning Hibernate 6</name>
+  <!-- Properties -->
   <properties>
     <testng.version>7.4.0</testng.version>
     <ignite.version>2.10.0</ignite.version>
-    <logback.version>1.2.3</logback.version>
+    <logback.version>1.2.9</logback.version>
     <jackson.version>2.12.3</jackson.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>

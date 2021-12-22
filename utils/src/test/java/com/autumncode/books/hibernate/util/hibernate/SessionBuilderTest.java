@@ -18,7 +18,6 @@ public class SessionBuilderTest {
     }
   }
 
-
   @Test
   public void testDoWithSession() {
     SessionUtil.doWithSession(session -> {
