@@ -1,4 +1,4 @@
-package com.autumncode.books.hibernate.chapter03.raw;
+package com.autumncode.books.hibernate.chapter03.simple;
 
 import com.autumncode.books.hibernate.chapter03.model.Person;
 import com.autumncode.books.hibernate.chapter03.model.Ranking;
@@ -8,28 +8,28 @@ import org.testng.annotations.Test;
 
 @Slf4j
 public class ModelTest {
-
   @Test
   public void testModelCreation() {
 
-    var subject = new Person();
-    subject.setName("J. C. Smell");
-
-    var observer = new Person();
-    observer.setName("Drew Lombardo");
 
     var skill = new Skill();
-    skill.setName("Java");
-
+    var subject = new Person();
+    var observer = new Person();
     var ranking = new Ranking();
+
+    subject.setName("J.C Smell");
+
+    observer.setName("Drew Lombardo");
+
+    skill.setName("Java");
 
     ranking.setSubject(subject);
     ranking.setObserver(observer);
     ranking.setSkill(skill);
-
     ranking.setRanking(8);
 
     log.info("{}", ranking);
+
 
   }
 }

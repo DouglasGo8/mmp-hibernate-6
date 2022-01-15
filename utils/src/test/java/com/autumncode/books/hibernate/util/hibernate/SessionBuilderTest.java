@@ -39,4 +39,6 @@ public class SessionBuilderTest {
     log.info("{}", thing);
     assertEquals(thing.getName(), "thingName");
   }
+
+
 }

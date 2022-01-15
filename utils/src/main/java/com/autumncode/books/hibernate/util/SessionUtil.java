@@ -16,6 +16,7 @@ import java.util.function.Function;
  */
 @Slf4j
 public class SessionUtil {
+
   private SessionFactory factory;
   private static final SessionUtil instance = new SessionUtil();
   private static final String CONFIG_NAME = "/configuration.properties";

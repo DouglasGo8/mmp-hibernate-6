@@ -1,4 +1,4 @@
-package com.autumncode.books.hibernate.chapter03.raw;
+package com.autumncode.books.hibernate.chapter03.hibernate;
 
 import com.autumncode.books.hibernate.chapter03.model.Person;
 import com.autumncode.books.hibernate.chapter03.model.Ranking;

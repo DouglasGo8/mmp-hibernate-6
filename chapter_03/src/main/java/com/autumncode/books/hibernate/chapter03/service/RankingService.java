@@ -4,6 +4,9 @@ import com.autumncode.books.hibernate.chapter03.model.Person;
 
 import java.util.Map;
 
+/**
+ * @author dougdb
+ */
 public interface RankingService {
 
   int getRankingFor(String subject, String skill);

@@ -3,3 +3,19 @@
 == Links
 
 - https://github.com/Apress/beginning-hibernate-6[Apress Beginning Hibernate 6]
+
+
+=== MVN Install local Libs
+[source, bash]
+----
+mvn install:install-file -Dfile=./target/utils-1.0-SNAPSHOT.jar \
+  -DgroupId=com.autumncode.books.hibernate.util \
+  -DartifactId=utils -Dversion=1.0-SNAPSHOT -Dpackaging=jar \
+  -DgeneratePom=true
+----
+
+=== MVN Test
+[source, bash]
+----
+mvn clean test -Dtest=ModelTest
+----
