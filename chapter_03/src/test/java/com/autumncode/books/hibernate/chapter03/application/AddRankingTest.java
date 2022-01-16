@@ -2,7 +2,6 @@ package com.autumncode.books.hibernate.chapter03.application;
 
 import com.autumncode.books.hibernate.chapter03.service.HibernateRankingService;
 import com.autumncode.books.hibernate.chapter03.service.RankingService;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
@@ -12,12 +11,7 @@ import static org.testng.AssertJUnit.assertEquals;
  */
 public class AddRankingTest {
 
-  private RankingService service;
-
-  @BeforeClass
-  public void setUp() {
-    this.service = new HibernateRankingService();
-  }
+  private final RankingService service = new HibernateRankingService();
 
   @Test
   public void addRanking() {

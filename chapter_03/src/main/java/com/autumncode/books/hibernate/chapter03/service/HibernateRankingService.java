@@ -6,6 +6,7 @@ import com.autumncode.books.hibernate.chapter03.model.Skill;
 import com.autumncode.books.hibernate.util.SessionUtil;
 import org.hibernate.Session;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
  * @author dougdb
  */
 public class HibernateRankingService implements RankingService {
+
   @Override
   public int getRankingFor(String subject, String skill) {
 
@@ -29,39 +31,62 @@ public class HibernateRankingService implements RankingService {
   public void addRanking(String subjectName, String observerName, String skillName, int rank) {
     try (var session = SessionUtil.getSession()) {
       var tx = session.beginTransaction();
-      addRanking(session, subjectName, observerName, skillName, rank);
+      this.addRanking(session, subjectName, observerName, skillName, rank);
       tx.commit();
     }
   }
 
   @Override
-  public void updateRanking(String subject, String observer, String skill, int ranking) {
-
+  public void updateRanking(String subject, String observer, String skill, int rank) {
+    try (var session = SessionUtil.getSession()) {
+      var tx = session.beginTransaction();
+      var ranking = findRanking(session, subject, observer, skill);
+      if (null == ranking) {
+        addRanking(session, subject, observer, skill, rank);
+      } else {
+        ranking.setRanking(rank);
+      }
+      tx.commit();
+    }
   }
 
   @Override
   public void removeRanking(String subject, String observer, String skill) {
-
+    try (var session = SessionUtil.getSession()) {
+      var tx = session.beginTransaction();
+      this.removeRanking(session, subject, observer, skill);
+      tx.commit();
+    }
   }
 
   @Override
   public Map<String, Integer> findRankingsFor(String subject) {
-    return null;
+
+    try (var session = SessionUtil.getSession()) {
+      return this.findRankingsFor(session, subject);
+    }
+
   }
 
   @Override
   public Person findBestPersonFor(String skill) {
-    return null;
+    Person person = null;
+    try (var session = SessionUtil.getSession()) {
+      var tx = session.beginTransaction();
+      person = findBestPersonFor(session, skill);
+      tx.commit();
+    }
+    return person;
   }
 
 
   private void addRanking(Session session, String subjectName, String observerName, String skillName, int rank) {
     //
+    var ranking = new Ranking();
     var subject = savePerson(session, subjectName);
     var observer = savePerson(session, observerName);
     var skill = saveSkill(session, skillName);
-
-    var ranking = new Ranking();
+    //
     ranking.setSubject(subject);
     ranking.setObserver(observer);
     ranking.setSkill(skill);
@@ -110,12 +135,69 @@ public class HibernateRankingService implements RankingService {
     query.setParameter("name", subject);
     query.setParameter("skill", skill);
 
-    final var stats = query
-            .list()
+    final var stats = query.list()
             .stream()
             .collect(Collectors.summarizingInt(Ranking::getRanking));
-
+    //
     return (int) stats.getAverage();
   }
 
+  private Map<String, Integer> findRankingsFor(Session session, String subject) {
+    Map<String, Integer> results = new HashMap<>();
+    var sql = "from Ranking r where r.subject.name=:name order by r.skill.name";
+    var query = session.createQuery(sql, Ranking.class);
+    query.setParameter("name", subject);
+    var rankings = query.list();
+    String lastSkillName = "";
+    int sum = 0;
+    int count = 0;
+
+    for (Ranking r : rankings) {
+      if (!lastSkillName.equals(r.getSkill().getName())) {
+        sum = 0;
+        count = 0;
+        lastSkillName = r.getSkill().getName();
+      }
+      sum += r.getRanking();
+      count++;
+      results.put(lastSkillName, sum / count);
+    }
+    return results;
+  }
+
+  private Person findBestPersonFor(Session session, String skill) {
+    // hbm query
+    var sql = "select r.subject.name, avg(r.ranking) " +
+            "from Ranking r where r.skill.name=:skill " +
+            "group by r.subject.name " +
+            "order by avg(r.ranking) desc";
+    //
+    var query = session.createQuery(sql, Object[].class);
+    query.setParameter("skill", skill);
+    var result = query.list();
+    //
+    if (result.size() > 0) {
+      var row = result.get(0);
+      String personName = row[0].toString();
+      return findPerson(session, personName);
+    }
+    //
+    return null;
+  }
+
+  private void removeRanking(Session session, String subject, String observer, String skill) {
+    var ranking = this.findRanking(session, subject, observer, skill);
+    if (null != ranking) {
+      session.delete(ranking);
+    }
+  }
+
+  private Ranking findRanking(Session session, String subject, String observer, String skill) {
+    var sql = "from Ranking r where r.subject.name=:subject and r.observer.name=:observer and r.skill.name=:skill";
+    var query = session.createQuery(sql, Ranking.class);
+    query.setParameter("subject", subject);
+    query.setParameter("observer", observer);
+    query.setParameter("skill", skill);
+    return query.uniqueResult();
+  }
 }

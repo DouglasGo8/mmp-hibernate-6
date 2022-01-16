@@ -8,6 +8,7 @@
 === MVN Install local Libs
 [source, bash]
 ----
+mvn clean -DskipTests compile package
 mvn install:install-file -Dfile=./target/utils-1.0-SNAPSHOT.jar \
   -DgroupId=com.autumncode.books.hibernate.util \
   -DartifactId=utils -Dversion=1.0-SNAPSHOT -Dpackaging=jar \
