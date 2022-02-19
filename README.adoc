@@ -4,7 +4,6 @@
 
 - https://github.com/Apress/beginning-hibernate-6[Apress Beginning Hibernate 6]
 
-
 === MVN Install local Libs
 [source, bash]
 ----
@@ -20,3 +19,21 @@ mvn install:install-file -Dfile=./target/utils-1.0-SNAPSHOT.jar \
 ----
 mvn clean test -Dtest=ModelTest
 ----
+
+=== Method to attach a detached Object
+
+[source, html]
+----
+update()
+load()
+refresh()
+merge()
+update()
+save()
+----
+
+=== Associations
+
+. A common mistake when designing entity models is to try to make all associations
+bidirectional
+. mappedBy is purely Foreign Key association, without this flag both entities must be updated manually

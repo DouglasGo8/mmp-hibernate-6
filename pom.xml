@@ -3,7 +3,6 @@
         xmlns="http://maven.apache.org/POM/4.0.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.autumncode.books.hibernate</groupId>
   <artifactId>mmp-hibernate-6</artifactId>
@@ -85,7 +84,7 @@
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
-      <version>42.3.1</version>
+      <version>42.3.2</version>
     </dependency>
     <!-- Connection Pooling -->
     <dependency>
@@ -119,5 +118,6 @@
     <module>chapter_01</module>
     <module>chapter_02</module>
     <module>chapter_03</module>
+    <module>chapter_04</module>
   </modules>
 </project>
