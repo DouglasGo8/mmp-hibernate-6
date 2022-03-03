@@ -1,51 +1,35 @@
 package com.autumncode.books.hibernate.chapter04.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
 public class Message {
 
   @Id
+  @Getter
+  @Setter
   @GeneratedValue(strategy = GenerationType.AUTO)
   Long id;
 
+  @Getter
+  @Setter
   @Column
   String content;
 
+  @Getter
+  @Setter
   @OneToOne
   Email email;
-
-  public Message() {
-  }
 
   public Message(String content) {
     this.setContent(content);
   }
   //end::preamble[]
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getContent() {
-    return content;
-  }
-
-  public void setContent(String content) {
-    this.content = content;
-  }
-
-  public Email getEmail() {
-    return email;
-  }
-
-  public void setEmail(Email email) {
-    this.email = email;
-  }
 
   //tag::postlude[]
   @Override

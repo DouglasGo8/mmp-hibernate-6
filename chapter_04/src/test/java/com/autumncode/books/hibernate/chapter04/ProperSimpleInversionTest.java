@@ -6,16 +6,16 @@ import com.autumncode.books.hibernate.util.SessionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
-import static org.testng.AssertJUnit.*;
+import static org.testng.AssertJUnit.assertNotNull;
 
 /**
  * @author dougdb
  */
 @Slf4j
-public class BrokenInversionTest {
+public class ProperSimpleInversionTest {
 
   @Test
-  public void testBrokenInversionCode() {
+  public void testProperSimpleInversionCode() {
     Long emailId;
     Long messageId;
     Email email;
@@ -24,10 +24,12 @@ public class BrokenInversionTest {
     try (var session = SessionUtil.getSession()) {
       var tx = session.beginTransaction();
 
+      // mappedBy attr must be commented
       email = new Email("Broken");
       message = new Message("Broken");
-      // mappedBy attr must be commented
+      //
       email.setMessage(message);
+      message.setEmail(email);
       //
       session.save(email);
       session.save(message);
@@ -39,7 +41,7 @@ public class BrokenInversionTest {
       tx.commit();
     }
     assertNotNull(email.getMessage());
-    assertNull(message.getEmail());
+    assertNotNull(message.getEmail());
 
     try (var session = SessionUtil.getSession()) {
       email = session.get(Email.class, emailId);
@@ -49,6 +51,7 @@ public class BrokenInversionTest {
     }
 
     assertNotNull(email.getMessage()); // join with Message Table exists
-    assertNull(message.getEmail()); // join with Email Table not exists
+    assertNotNull(message.getEmail()); // join with Email Table not exists
   }
+
 }
