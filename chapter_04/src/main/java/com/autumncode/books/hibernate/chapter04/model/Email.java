@@ -7,22 +7,18 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 @NoArgsConstructor
 public class Email {
 
   @Id
-  @Getter
-  @Setter
   @GeneratedValue(strategy = GenerationType.AUTO)
   Long id;
 
   @Column
-  @Getter
-  @Setter
   String subject;
 
-  @Getter
-  @Setter
   @OneToOne(mappedBy = "email")
   Message message;
 

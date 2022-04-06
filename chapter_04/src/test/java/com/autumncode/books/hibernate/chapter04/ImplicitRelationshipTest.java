@@ -26,8 +26,12 @@ public class ImplicitRelationshipTest {
       var tx = session.beginTransaction();
       email = new Email("Inverse Email");
       message = new Message("Inverse Message");
+
       // mappedBy attr must be uncommented
       // email.setMessage(message);
+
+      // In this case message table will have the email_id column with the fk value
+      // and to hibernate will create the left join behavior
       message.setEmail(email);
       //
       session.save(email);

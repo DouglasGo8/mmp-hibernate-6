@@ -27,9 +27,11 @@ public class BrokenInversionTest {
       email = new Email("Broken");
       message = new Message("Broken");
       // mappedBy attr must be commented
+
       email.setMessage(message);
-      //
+      // Have on record on the Email table with message_id bind the relationship
       session.save(email);
+      // Have on record on the Message table without email_id relationship
       session.save(message);
       //
 
@@ -38,7 +40,13 @@ public class BrokenInversionTest {
 
       tx.commit();
     }
-    assertNotNull(email.getMessage());
+
+    assertNotNull(email.getMessage()); // message_id has a value
+
+    // In this scenario we can't create a SELECT clause in Message table and
+    // try join with Email Table
+    // To get the desired effect (both table with relationship), both entities must be updated
+    // There is no implicit call of message.setEmail(email)
     assertNull(message.getEmail());
 
     try (var session = SessionUtil.getSession()) {

@@ -24,7 +24,7 @@ public class ProperSimpleInversionTest {
     try (var session = SessionUtil.getSession()) {
       var tx = session.beginTransaction();
 
-      // mappedBy attr must be commented
+      // mappedBy attr must be commented to simulate the explicit behavior
       email = new Email("Broken");
       message = new Message("Broken");
       //
@@ -40,6 +40,7 @@ public class ProperSimpleInversionTest {
 
       tx.commit();
     }
+    //
     assertNotNull(email.getMessage());
     assertNotNull(message.getEmail());
 
