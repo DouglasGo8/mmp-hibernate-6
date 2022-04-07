@@ -21,7 +21,6 @@ public class SimpleObject {
   @Column
   Long value;
 
-
   @Override
   public String toString() {
     return "SimpleObject{" +
