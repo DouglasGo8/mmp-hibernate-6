@@ -44,10 +44,12 @@ public class SimpleObject {
             ? !getId().equals(that.getId())
             : that.getId() != null)
       return false;
+
     if (getKey() != null
             ? !getKey().equals(that.getKey())
             : that.getKey() != null)
       return false;
+
     return getValue() != null
             ? getValue().equals(that.getValue())
             : that.getValue() == null;

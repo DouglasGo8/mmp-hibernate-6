@@ -5,36 +5,73 @@
 - https://github.com/Apress/beginning-hibernate-6[Apress Beginning Hibernate 6]
 
 === MVN Install local Libs
-[source, bash]
+
+[source,bash]
 ----
 mvn clean -DskipTests compile package
 mvn install:install-file -Dfile=./target/utils-1.0-SNAPSHOT.jar \
   -DgroupId=com.autumncode.books.hibernate.util \
   -DartifactId=utils -Dversion=1.0-SNAPSHOT -Dpackaging=jar \
   -DgeneratePom=true
-
 ----
 
 === MVN Test
-[source, bash]
+
+[source,bash]
 ----
 mvn clean test -Dtest=ModelTest
 ----
 
-=== Method to attach a detached Object
+=== Methods to attach a detached Object
 
-[source, html]
+[source,html]
 ----
 update()
 load()
-refresh()
-merge()
+refresh() -- overrides the detached entity’s values with the values from the database (DB -> Obj)
+merge() --  detached entity’s changes migrated to (or overriding) the database (Obj -> DB)
 update()
 save()
 ----
 
 === Associations
 
-. A common mistake when designing entity models is to try to make all associations
-bidirectional
+. A common mistake when designing entity models is to try to make all associations bidirectional
 . mappedBy is purely Foreign Key association, without this flag both entities must be updated manually
+. When we have a persistent object in Hibernate, that object represents both an instance of a class in a particular Java virtual machine (JVM) and a row (or rows) in a database table (or tables), in summary you shouldn’t rely on this in production code; object equivalence should always be tested with equals()
+
+
+== Hibernate _get_ method with LockModes description
+
+[source, java]
+----
+public <T> T get(Class<T> entityType, Object id)
+public Object get(String entityName, Object id)
+public <T> T get(Class<T> entityType, Object id, LockMode lockMode)
+public Object get(String entityName, Object id, LockMode lockMode)
+----
+
+== Hibernate _load_ method with LockModes description
+
+* You should not use a load() method unless you are sure that the object exist.
+If you are not certain, then use one of the get() methods.
+The load() methods will throw an exception if the unique ID is not found in the database, whereas the get() methods will merely return a null reference
+
+[source,java]
+----
+public <T> T load(Class<T> theClass, Object id, LockMode lockMode)
+public Object load(String entityName, Object id, LockMode lockMode)
+----
+
+. NONE: Uses no row-level locking and uses a cached object if available; this is the Hibernate default.
+. READ: Prevents other SELECT queries from reading data that is in the middle of a transaction (and thus possibly invalid)until it is committed.
+. UPGRADE: Uses the SELECT FOR UPDATE SQL syntax (or equivalent) to lock the data until the transaction is finished.
+(This is actually deprecated; use PESSIMISTIC_WRITE instead.)
+. UPGRADE_NOWAIT: Uses the NOWAIT keyword (for Oracle), which returns an error immediately if there is another thread using that row; otherwise, this is similar to UPGRADE.
+. UPGRADE_SKIPLOCKED: Skips locks for rows already locked by other updates, but otherwise this is similar to UPGRADE.
+. OPTIMISTIC: This mode assumes that updates will not experience contention.
+The entity’s contents will be verified near the transaction’s end.
+. OPTIMISTIC_FORCE_INCREMENT: This is like OPTIMISTIC, except it forces the version of the object to be incremented near the transaction’s end.
+. PESSIMISTIC_READ and PESSIMISTIC_WRITE: Both of these obtain a lock immediately on row access.
+. PESSIMISTIC_FORCE_INCREMENT: This obtains the lock immediately on row access and also immediately updates the entity version.
+

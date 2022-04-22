@@ -18,7 +18,7 @@ public class SaveOrUpdateTest {
 
     try (var session = SessionUtil.getSession()) {
       var tx = session.beginTransaction();
-      session.createQuery("delete from SimpleObject ").executeUpdate();
+      session.createQuery("delete from SimpleObject").executeUpdate();
       tx.commit();
     }
 

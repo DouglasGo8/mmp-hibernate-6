@@ -25,6 +25,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <hibernate.validator.version>6.2.0.Final</hibernate.validator.version>
   </properties>
+
   <!-- Billing of Materials -->
   <dependencyManagement>
     <dependencies>
@@ -70,6 +71,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  <!-- Dependencies -->
   <dependencies>
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -87,7 +89,7 @@
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
-      <version>42.3.2</version>
+      <version>42.3.3</version>
     </dependency>
     <!-- Connection Pooling -->
     <dependency>
@@ -108,7 +110,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.10.0</version>
         <configuration>
           <release>11</release>
         </configuration>
