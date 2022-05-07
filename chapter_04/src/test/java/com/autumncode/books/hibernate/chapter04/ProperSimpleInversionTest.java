@@ -31,8 +31,8 @@ public class ProperSimpleInversionTest {
       email.setMessage(message);
       message.setEmail(email);
       //
-      session.save(email);
-      session.save(message);
+      session.persist(email);
+      session.persist(message);
       //
 
       emailId = email.getId();

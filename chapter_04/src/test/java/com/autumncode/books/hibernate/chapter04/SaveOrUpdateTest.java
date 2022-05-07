@@ -28,7 +28,7 @@ public class SaveOrUpdateTest {
       //
       obj.setKey("Open Source and Standards");
       obj.setValue(14L);
-      session.save(obj);
+      session.persist(obj);
       assertNotNull(obj.getId());
       id = obj.getId();
       tx.commit();

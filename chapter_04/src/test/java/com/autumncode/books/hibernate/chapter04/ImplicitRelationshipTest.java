@@ -34,8 +34,8 @@ public class ImplicitRelationshipTest {
       // and to hibernate will create the left join behavior
       message.setEmail(email);
       //
-      session.save(email);
-      session.save(message);
+      session.persist(email);
+      session.persist(message);
       //
       emailId = email.getId();
       messageId = message.getId();

@@ -14,8 +14,10 @@
     <property name="format_sql">true</property>
     <property name="hbm2ddl.auto">create-drop</property>
     <!-- Mapping Classes -->
+    <mapping class="com.autumncode.books.hibernate.chapter04.model.Book"/>
     <mapping class="com.autumncode.books.hibernate.chapter04.model.Email"/>
     <mapping class="com.autumncode.books.hibernate.chapter04.model.Message"/>
+    <mapping class="com.autumncode.books.hibernate.chapter04.model.Library"/>
     <mapping class="com.autumncode.books.hibernate.chapter04.model.SimpleObject"/>
   </session-factory>
 </hibernate-configuration>

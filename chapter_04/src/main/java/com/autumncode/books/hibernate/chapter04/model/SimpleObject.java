@@ -1,10 +1,10 @@
 package com.autumncode.books.hibernate.chapter04.model;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 
 @Entity
 @Getter
@@ -39,7 +39,7 @@ public class SimpleObject {
 
     var that = (SimpleObject) o;
 
-    // we prefer the method versions of accessors, because of Hibernate's proxies.
+    // we prefer the method versions of accessors, because of Hibernate proxies.
     if (getId() != null
             ? !getId().equals(that.getId())
             : that.getId() != null)

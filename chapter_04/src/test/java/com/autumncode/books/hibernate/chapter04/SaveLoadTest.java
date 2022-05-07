@@ -21,7 +21,7 @@ public class SaveLoadTest {
       obj.setKey("s1");
       obj.setValue(10L);
       //
-      session.save(obj);
+      session.persist(obj);
       assertNotNull(obj.getId());
 
       id = obj.getId();

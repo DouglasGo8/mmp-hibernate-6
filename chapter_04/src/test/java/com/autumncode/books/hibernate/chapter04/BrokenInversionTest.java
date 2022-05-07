@@ -6,7 +6,8 @@ import com.autumncode.books.hibernate.util.SessionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
-import static org.testng.AssertJUnit.*;
+import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.AssertJUnit.assertNull;
 
 /**
  * @author dougdb
@@ -30,9 +31,13 @@ public class BrokenInversionTest {
 
       email.setMessage(message);
       // Have on record on the Email table with message_id bind the relationship
-      session.save(email);
+      //session.save(email);
+
+      session.persist(email);
+
       // Have on record on the Message table without email_id relationship
-      session.save(message);
+      // session.save(message);
+      session.persist(message);
       //
 
       emailId = email.getId();
