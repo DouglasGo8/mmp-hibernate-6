@@ -3,6 +3,7 @@
         xmlns="http://maven.apache.org/POM/4.0.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <!--  -->
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.autumncode.books.hibernate</groupId>
   <artifactId>mmp-hibernate-6</artifactId>
@@ -21,11 +22,10 @@
     <!--
     <hibernate.core.version>6.0.0.Final</hibernate.core.version>
     -->
-    <hibernate.core.version>6.0.0.Final</hibernate.core.version>
+    <hibernate.core.version>6.1.3.Final</hibernate.core.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <hibernate.validator.version>6.2.0.Final</hibernate.validator.version>
   </properties>
-
   <!-- Billing of Materials -->
   <dependencyManagement>
     <dependencies>
@@ -89,7 +89,7 @@
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
-      <version>42.3.4</version>
+      <version>42.3.7</version>
     </dependency>
     <!-- Connection Pooling -->
     <dependency>
@@ -110,9 +110,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.10.0</version>
+        <version>3.10.1</version>
         <configuration>
-          <release>11</release>
+          <release>17</release>
         </configuration>
       </plugin>
     </plugins>
@@ -124,5 +124,6 @@
     <module>chapter_02</module>
     <module>chapter_03</module>
     <module>chapter_04</module>
+    <module>chapter_06</module>
   </modules>
 </project>

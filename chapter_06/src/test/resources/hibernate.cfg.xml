@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.driver_class">org.postgresql.Driver</property>
+    <property name="connection.url">jdbc:postgresql://localhost/postgres</property>
+    <property name="connection.username">guest</property>
+    <property name="connection.password">welcome1</property>
+    <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <!-- Echo all executed SQL to stdout -->
+    <property name="show_sql">true</property>
+    <property name="format_sql">true</property>
+    <property name="hbm2ddl.auto">create-drop</property>
+    <!-- Mapping Classes -->
+    <mapping class="com.autumncode.books.hibernate.chapter06.primarykey.after.Book"/>
+    <mapping class="com.autumncode.books.hibernate.chapter06.compoundpk.CPKBook"/>
+    <mapping class="com.autumncode.books.hibernate.chapter06.compoundpk.EmbeddedPKBook"/>
+    <mapping class="com.autumncode.books.hibernate.chapter06.compoundpk.IdClassBook"/>
+    <mapping class="com.autumncode.books.hibernate.chapter06.twotables.Customer"/>
+
+    <mapping class="com.autumncode.books.hibernate.chapter06.mapped.ComputerBook"/>
+
+    <mapping class="com.autumncode.books.hibernate.chapter06.naturalid.Employee"/>
+    <mapping class="com.autumncode.books.hibernate.chapter06.naturalid.SimpleNaturalIdEmployee"/>
+    <!--
+    Postgresql Error
+    <mapping class="com.autumncode.books.hibernate.chapter06.embedded.User"/>
+    -->
+    <mapping class="com.autumncode.books.hibernate.chapter06.embedded.EBook"/>
+    <mapping class="com.autumncode.books.hibernate.chapter06.embedded.Author"/>
+    <!-- -->
+    <mapping class="com.autumncode.books.hibernate.chapter06.single.Book" />
+    <mapping class="com.autumncode.books.hibernate.chapter06.single.ComputerBook" />
+
+    <mapping class="com.autumncode.books.hibernate.chapter06.joined.Book" />
+    <mapping class="com.autumncode.books.hibernate.chapter06.joined.ComputerBook" />
+
+    <mapping class="com.autumncode.books.hibernate.chapter06.perclass.Book" />
+    <mapping class="com.autumncode.books.hibernate.chapter06.perclass.ComputerBook" />
+
+  </session-factory>
+</hibernate-configuration>

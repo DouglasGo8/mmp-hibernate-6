@@ -75,3 +75,45 @@ The entity’s contents will be verified near the transaction’s end.
 . PESSIMISTIC_READ and PESSIMISTIC_WRITE: Both of these obtain a lock immediately on row access.
 . PESSIMISTIC_FORCE_INCREMENT: This obtains the lock immediately on row access and also immediately updates the entity version.
 
+=== Secondary Table Code
+
+[source,sql]
+----
+create table customer
+(id integer not null, name varchar(255), primary key (id));
+create table customer_details
+(address varchar(255), id integer not null, primary key (id));
+alter table if exists customer
+add constraint UKcrkjmjk1oj8gb6j6t5kt7gcxm unique (name);
+alter table if exists customer_details
+add constraint FK4g7jhj0n6g33lh0ar8ii6c9to foreign key (id) references
+customer;
+----
+
+=== Element Collections
+
+[source,java]
+----
+@Entity
+class User {
+  @Id
+  @GeneratedValue
+  Long id;
+
+  @ElementCollection
+  List<String> passwordHints;
+}
+----
+
+[source,sql]
+----
+create table User (
+    id number not null primary key,
+    name text(200),
+    address text(8)
+)
+create table User_addressReferences(
+    user_id number not null,
+    addressReference text(200)
+)
+----
