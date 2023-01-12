@@ -2,7 +2,7 @@ package com.autumncode.books.hibernate.chapter04;
 
 
 import com.autumncode.books.hibernate.chapter04.model.SimpleObject;
-import com.autumncode.books.hibernate.util.SessionUtil;
+import com.autumncode.books.hibernate.util.session.SessionUtil;
 
 import static org.testng.AssertJUnit.assertEquals;
 

@@ -3,7 +3,7 @@ package com.autumncode.books.hibernate.chapter04;
 
 import com.autumncode.books.hibernate.chapter04.model.Book;
 import com.autumncode.books.hibernate.chapter04.model.Library;
-import com.autumncode.books.hibernate.util.SessionUtil;
+import com.autumncode.books.hibernate.util.session.SessionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 

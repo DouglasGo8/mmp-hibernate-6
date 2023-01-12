@@ -3,7 +3,7 @@ package com.autumncode.books.hibernate.chapter03.service;
 import com.autumncode.books.hibernate.chapter03.model.Person;
 import com.autumncode.books.hibernate.chapter03.model.Ranking;
 import com.autumncode.books.hibernate.chapter03.model.Skill;
-import com.autumncode.books.hibernate.util.SessionUtil;
+import com.autumncode.books.hibernate.util.session.SessionUtil;
 import org.hibernate.Session;
 
 import java.util.HashMap;

@@ -5,13 +5,12 @@ import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertNotNull;
 
-public class BookTest {
+public class RelationsTest {
 
   @Test
-  public void bookTest() {
+  public void validateRelations() {
     try (var session = SessionUtil.getSession()) {
       assertNotNull(session);
     }
-
   }
 }

@@ -2,7 +2,8 @@
 
 == Links
 
-- https://github.com/Apress/beginning-hibernate-6[Apress Beginning Hibernate 6]
+- https://github.com/Apress/beginning-hibernate-6[Apress Beginning Hibernate 6 Git Hub]
+- https://stackoverflow.com/questions/24386771/javax-validation-validationexception-hv000183-unable-to-load-javax-el-express[StackOverflow Jakarta and Hibernate Validator Issue Dependencies Solution]
 
 === MVN Install local Libs
 

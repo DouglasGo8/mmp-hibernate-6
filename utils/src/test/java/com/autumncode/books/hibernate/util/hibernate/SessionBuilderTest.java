@@ -1,6 +1,6 @@
 package com.autumncode.books.hibernate.util.hibernate;
 
-import com.autumncode.books.hibernate.util.SessionUtil;
+import com.autumncode.books.hibernate.util.session.SessionUtil;
 import com.autumncode.books.hibernate.util.model.Thing;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;

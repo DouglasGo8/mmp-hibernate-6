@@ -1,4 +1,4 @@
-package com.autumncode.books.hibernate.util;
+package com.autumncode.books.hibernate.util.session;
 
 
 import lombok.extern.slf4j.Slf4j;

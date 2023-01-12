@@ -5,7 +5,7 @@
 <hibernate-configuration>
   <session-factory>
     <property name="connection.driver_class">org.postgresql.Driver</property>
-    <property name="connection.url">jdbc:postgresql://localhost/productsdb</property>
+    <property name="connection.url">jdbc:postgresql://localhost/postgres</property>
     <property name="connection.username">guest</property>
     <property name="connection.password">welcome1</property>
     <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
@@ -15,5 +15,7 @@
     <property name="hbm2ddl.auto">update</property>
     <!-- Mapping Classes -->
     <mapping class="com.autumncode.books.hibernate.util.model.Thing"/>
+    <mapping class="com.autumncode.books.hibernate.util.model.ValidatedPerson"/>
+    <mapping class="com.autumncode.books.hibernate.util.model.UnvalidatedSimplePerson"/>
   </session-factory>
 </hibernate-configuration>

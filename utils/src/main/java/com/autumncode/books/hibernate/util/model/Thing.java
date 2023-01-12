@@ -1,12 +1,11 @@
 package com.autumncode.books.hibernate.util.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Entity
-@Getter
-@Setter
+
+@Data
+@Entity(name = "Thing")
 public class Thing {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
