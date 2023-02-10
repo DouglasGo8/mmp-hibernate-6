@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>mmp-hibernate-6</artifactId>
+    <groupId>com.autumncode.books.hibernate</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>com.autumncode.books.hibernate.chapter08</groupId>
+  <artifactId>chapter_08</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>Apress :: Beginning Hibernate 6 :: Chapter 08</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.autumncode.books.hibernate.util</groupId>
+      <artifactId>utils</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.ignite</groupId>
+      <artifactId>ignite-core</artifactId>
+      <!-- Fixed java.lang.NoClassDefFoundError: Could not initialize class org.apache.ignite.IgniteJdbcThinDriver -->
+      <version>3.0.0-beta1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-jcache</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.ehcache</groupId>
+      <artifactId>ehcache</artifactId>
+      <version>3.10.8</version>
+      <!-- Fix Dependency Error
+       Failed to collect dependencies at
+       org.ehcache:ehcache:jar:3.9.1 ->
+       org.glassfish.jaxb:jaxb-runtime:jar:2.3.0-b170127.1453 ->
+       org.glassfish.jaxb:jaxb-core:jar:2.3.0-b170127.1453 ->
+       javax.xml.bind:jaxb-api:jar:2.3.0-b161121.1438:
+       Failed to read artifact descriptor
+       for javax.xml.bind:jaxb-api:jar:2.3.0-b161121.1438: -->
+      <exclusions>
+        <exclusion>
+          <groupId>org.glassfish.jaxb</groupId>
+          <artifactId>jaxb-runtime</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
+
+</project>

@@ -29,8 +29,8 @@ mvn clean test -Dtest=ModelTest
 ----
 update()
 load()
-refresh() -- overrides the detached entity’s values with the values from the database (DB -> Obj)
-merge() --  detached entity’s changes migrated to (or overriding) the database (Obj -> DB)
+refresh() -- overrides the detached entity’s values with the values from the database (DB => Obj)
+merge() --  detached entity’s changes migrated to (or overriding) the database (Obj => DB)
 update()
 save()
 ----
@@ -118,3 +118,11 @@ create table User_addressReferences(
     addressReference text(200)
 )
 ----
+
+.Deadlock/Multithread Tip
+====
+*_Do not share the Session object between threads, this will eliminate any risk of deadlocking on objects contained within the session cache_*
+====
+
+
+* _Chapter 07 is embedded in utils project_
