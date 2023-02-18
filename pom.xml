@@ -3,11 +3,12 @@
         xmlns="http://maven.apache.org/POM/4.0.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <!--  -->
+  <!-- Space -->
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.autumncode.books.hibernate</groupId>
   <artifactId>mmp-hibernate-6</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <!-- KinD Of -->
   <packaging>pom</packaging>
   <name>Apress :: Beginning Hibernate 6</name>
   <!-- Properties -->
@@ -18,7 +19,7 @@
     <jackson.version>2.12.3</jackson.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <javax.el-api.version>3.0.0</javax.el-api.version>
+    <javax.el-api.version>3.0.1-b12</javax.el-api.version>
     <!--
     <hibernate.core.version>6.0.0.Final</hibernate.core.version>
     -->
@@ -130,6 +131,7 @@
     <module>chapter_03</module>
     <module>chapter_04</module>
     <module>chapter_06</module>
+    <module>chapter_07</module>
     <module>chapter_08</module>
     <module>chapter_09</module>
   </modules>

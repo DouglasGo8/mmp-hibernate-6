@@ -13,13 +13,18 @@
   <version>1.0-SNAPSHOT</version>
 
   <name>Apress :: Beginning Hibernate 6 :: Chapter 09</name>
-  
+
   <dependencies>
     <dependency>
       <groupId>com.autumncode.books.hibernate.util</groupId>
       <artifactId>utils</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
+    <!--
+    ================================
+    version 8.0.0.Final with issue
+    ====================================
+    Caused by: java.lang.ClassNotFoundException: jakarta.el.ELManager
     <dependency>
       <groupId>org.hibernate.validator</groupId>
       <artifactId>hibernate-validator</artifactId>
@@ -30,10 +35,12 @@
       <artifactId>hibernate-validator-cdi</artifactId>
       <version>${hibernate.validator.version}</version>
     </dependency>
+    -->
+
     <dependency>
-      <groupId>javax.el</groupId>
-      <artifactId>javax.el-api</artifactId>
-      <version>3.0.1-b06</version>
+      <groupId>org.glassfish</groupId>
+      <artifactId>javax.el</artifactId>
+      <version>${javax.el-api.version}</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.web</groupId>

@@ -10,10 +10,14 @@
     <property name="connection.password">welcome1</property>
     <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <!-- Echo all executed SQL to stdout -->
+    <!-- set up c3p0 for use -->
+    <property name="c3p0.max_size">10</property>
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     <property name="hbm2ddl.auto">create-drop</property>
     <!-- Mapping Classes -->
-
+    <mapping class="com.autumncode.books.hibernate.chapter09.model.Product"/>
+    <mapping class="com.autumncode.books.hibernate.chapter09.model.Software"/>
+    <mapping class="com.autumncode.books.hibernate.chapter09.model.Supplier"/>
   </session-factory>
 </hibernate-configuration>
