@@ -1,9 +1,13 @@
 package com.autumncode.books.hibernate.chapter09.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity

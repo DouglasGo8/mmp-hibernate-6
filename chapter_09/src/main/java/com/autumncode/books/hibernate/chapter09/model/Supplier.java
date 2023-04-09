@@ -2,11 +2,12 @@ package com.autumncode.books.hibernate.chapter09.model;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class Supplier implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
+
 
 
   @NotNull

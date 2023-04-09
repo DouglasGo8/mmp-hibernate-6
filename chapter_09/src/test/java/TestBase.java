@@ -20,13 +20,14 @@ public class TestBase {
       var supplier = new Supplier("Hardware, Inc.");
       supplier.getProducts().add(new Product(supplier, "Optical Wheel Mouse", "Mouse", 5.00));
       supplier.getProducts().add(new Product(supplier, "Trackball Mouse", "Mouse", 22.00));
-      session.save(supplier);
+      session.persist(supplier);
 
       supplier = new Supplier("Supplier 2");
       supplier.getProducts().add(new Software(supplier, "SuperDetect", "Antivirus", 14.95, "1.0"));
       supplier.getProducts().add(new Software(supplier, "Wildcat", "Browser", 19.95, "2.2"));
       supplier.getProducts().add(new Product(supplier, "AxeGrinder", "Gaming Mouse", 42.00));
-      session.save(supplier);
+      session.persist(supplier);
+      //
       tx.commit();
     }
 
@@ -36,8 +37,13 @@ public class TestBase {
 
   @AfterMethod
   public void closeSession() {
-    session.createQuery("delete from Product").executeUpdate();
-    session.createQuery("delete from Supplier").executeUpdate();
+    //this.session.remove("delete from Product");//.executeUpdate();
+    //session.createQuery("delete from Supplier").executeUpdate();
+
+    //this.session.createQuery("delete from Product").executeUpdate();
+    // Postgres feat.
+    this.session.createNativeQuery("truncate table Supplier cascade").executeUpdate();
+    //session.remove("Supplier");
     if (tx.isActive()) {
       tx.commit();
     }
