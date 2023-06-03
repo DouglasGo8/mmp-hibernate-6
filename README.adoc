@@ -20,7 +20,7 @@ mvn install:install-file -Dfile=./target/utils-1.0-SNAPSHOT.jar \
 
 [source,bash]
 ----
-mvn clean test -Dtest=ModelTest
+mvn clean compile test -Dtest=ModelTest
 ----
 
 === Methods to attach a detached Object

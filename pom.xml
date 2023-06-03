@@ -23,7 +23,7 @@
     <!--
     <hibernate.core.version>6.0.0.Final</hibernate.core.version>
     -->
-    <hibernate.core.version>6.2.0.Final</hibernate.core.version>
+    <hibernate.core.version>6.2.2.Final</hibernate.core.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <hibernate.validator.version>8.0.0.Final</hibernate.validator.version>
   </properties>
@@ -126,6 +126,7 @@
   <!-- Modules -->
   <modules>
     <module>utils</module>
+    <module>own-orm</module>
     <module>chapter_01</module>
     <module>chapter_02</module>
     <module>chapter_03</module>

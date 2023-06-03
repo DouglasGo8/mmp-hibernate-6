@@ -1,3 +1,5 @@
+package com.autumncode.books.hibernate.chapter09;
+
 import com.autumncode.books.hibernate.chapter09.model.Product;
 import com.autumncode.books.hibernate.chapter09.model.Software;
 import com.autumncode.books.hibernate.chapter09.model.Supplier;

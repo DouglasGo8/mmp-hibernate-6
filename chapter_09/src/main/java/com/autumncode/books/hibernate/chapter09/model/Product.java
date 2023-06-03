@@ -1,7 +1,6 @@
 package com.autumncode.books.hibernate.chapter09.model;
 
 import jakarta.persistence.*;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

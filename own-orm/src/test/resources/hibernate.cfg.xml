@@ -12,7 +12,9 @@
     <!-- Echo all executed SQL to stdout -->
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
+    <!--
     <property name="hbm2ddl.auto">create-drop</property>
-    <mapping class="com.autumncode.books.hibernate.chapter02.model.Message"/>
+    -->
+    <mapping class="com.autumncode.books.hibernate.own.orm.entity.RestaurantEntity"/>
   </session-factory>
 </hibernate-configuration>
